@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Note Form</title>
+  </head>
+  <body>
+    <h1>{{ form_title }}</h1>
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <label>Title:</label><br />
+      {{ form.title }}<br /><br />
+
+      <label>Content:</label><br />
+      {{ form.content }}<br /><br />
+
+      <label>User:</label><br />
+      {{ form.user }} <br /><br />
+
+      <button type="submit">Save</button>
+    </form>
+
+    <br />
+    <a href="{% url 'notes' %}">Back to list</a>
+  </body>
+</html>
+  

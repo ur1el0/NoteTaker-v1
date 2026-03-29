@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title>All Notes</title>
+  </head>
+  <body>
+    <h1>All Notes</h1>
+
+    <a href="{% url 'create' %}">
+      <button>Create Note</button>
+    </a>
+
+    <hr />
+    {% for note in notes%}
+    <div style="border: 1px solid black; padding: 10px; margin: 10px">
+      <h2>{{ note.title }}</h2>
+
+      <p>{{ note.content|truncatewords:10}}</p>
+      <p><strong>User:</strong> {{ note.user.name }}</p>
+
+      <a href="{% url 'edit' note.id %}">
+        <button>Edit</button>
+      </a>
+
+      <a href="{% url 'delete' note.id %}">
+        <button>Delete</button>
+      </a>
+    </div>
+    {% empty %}
+    <p>No notes available.</p>
+    {% endfor %}
+  </body>
+</html>
